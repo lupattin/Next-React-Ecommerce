@@ -1,11 +1,17 @@
 import type { NextPage } from 'next'
 import { Layout } from 'components/layout/layout'
-import {Example} from "ui/slyder/slyder"
+import { Search } from 'components/searchComp/search'
+import {Slyder} from "components/slyder/slyder"
+import { useProducts } from 'lib/hooks'
 const Home: NextPage = () => {
+
+  const data = useProducts()  
+  
   return (
     <Layout>
-      <div style={{height: "80vh"}}>
-        <Example ></Example>
+      <div style={{height: "90vh"}}>
+        <Search></Search>
+        <Slyder data={data}></Slyder>
       </div>
     </Layout>
   )

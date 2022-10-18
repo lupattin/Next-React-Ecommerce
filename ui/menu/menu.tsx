@@ -1,8 +1,10 @@
+import { Button } from "@mui/material";
+
 export const Menu = () => {
     return (
       <div> 
         
-        Menu
+        <Button variant="contained">Iniciar Sesión</Button>
         
       </div>
     );

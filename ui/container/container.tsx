@@ -9,13 +9,25 @@ const StyledContainerHeader = styled(MUIContainer)`
   justify-content: space-around;
   align-items: center;
   background-color: rgb(244 235 240);
-  height: 50px;
+  height: 100px;
   border-bottom: 1px solid #e0e0e0;
 `
 
 const StyledContainerFooter = styled(MUIContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   background-color: rgb(38 35 37);
-  height: 200px; 
+  height: 40vh; 
 `
 
-export {StyledContainerHeader, StyledContainerFooter}
+const StyledContainerSearcher = styled(MUIContainer)`
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 90px;
+  flex-direction: column;
+`
+
+export {StyledContainerHeader, StyledContainerFooter, StyledContainerSearcher}
