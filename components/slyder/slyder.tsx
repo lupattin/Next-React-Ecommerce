@@ -37,7 +37,7 @@ function Item({item}:any){
                 </Button>
             </Paper>
             <Paper style={{ width:"50%"}}>
-                <Image layout="responsive" height="100px" width="100px" src={item.Images[0].url} alt="prueba"/>
+                <Image layout="responsive" height="100px" width="100px" src={item.Images[0].url} alt="prueba" style={{height:"535px"}}/>
             </Paper>
         </div>
     )
