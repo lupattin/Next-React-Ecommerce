@@ -2,45 +2,38 @@ import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
 import { Button } from "@mui/material";
 import { useAuth, useCode } from "lib/hooks";
-import { useEffect, useState} from "react";
-import { useSetRecoilState, useRecoilState } from 'recoil'
-import { signInDisplay, codeDisplay } from "lib/atoms"
+import { useState} from "react";
+import { useRecoilState } from 'recoil'
+import { signInDisplay, codeDisplay} from "lib/atoms"
+import { useEffectEmail, useEffectCode } from "lib/auxfunctions";
 
 
 export const SignInForm = ({closeSignIn}) => {
   const { register, handleSubmit } = useForm();
 
-  const seterSignIn = useSetRecoilState(signInDisplay);
-  const seterCode = useSetRecoilState(codeDisplay);
-
   const displaySignIn = useRecoilState(signInDisplay) as any;
   const displayCode = useRecoilState(codeDisplay) as any;
-  
+
+  /* Show and disable the email form for sending the code */
   const [email, setEmail] = useState("");
   const isCodeSended = useAuth(email);
   
-  useEffect(()=>{
-    if(isCodeSended.data != undefined){
-      seterSignIn("none") 
-      seterCode("flex")
-    } 
-  },[isCodeSended.data])
+  useEffectEmail(isCodeSended.data)
+  
+  
+  /* and here is the Show and disable the code form for checking the code */
+  const [code, setCode] = useState("");
+  const authCode = useCode(email, code);
+  
+  useEffectCode(authCode.data, closeSignIn)
+
+  /* The two handlers for the two forms */
   
   function formSubmit(data) {
 
     setEmail(data.email);
   }
 
-  const [code, setCode] = useState("");
-  const authCode = useCode(email, code);
-  console.log(authCode);
-
-  useEffect(()=>{
-    if(isCodeSended.data != undefined){
-      closeSignIn()
-    } 
-  },[authCode.data])
-  
   function sendCode(data){
     setCode(data.code);
     
@@ -55,7 +48,6 @@ export const SignInForm = ({closeSignIn}) => {
             required
             id="outlined-required"
             label="Email"
-            defaultValue="****@email.com"
             {...register("email")}
           />
           <Button variant="contained" type="submit">
@@ -70,8 +62,7 @@ export const SignInForm = ({closeSignIn}) => {
             style={{ margin: "25px 0 5px" }}
             required
             id="outlined-required"
-            label="Code"
-            defaultValue="Tu Codigo"
+            label="Codigo"
             {...register("code")}
           />
           <Button variant="contained" type="submit">

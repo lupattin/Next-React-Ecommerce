@@ -5,9 +5,9 @@ import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { SignInForm } from "ui/forms/signinform";
+import { UserDataForm } from "ui/forms/userDataForm";
 
-export const SignIn = ({displaySignIn}) => {
+export const UserData = () => {
     
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -29,18 +29,20 @@ export const SignIn = ({displaySignIn}) => {
   };
   return (
       
-      <div style={{display:displaySignIn[0]}}> 
-        <Button onClick={handleOpen} variant="contained">Iniciar Sesión</Button>
+      <div style={{display:"flex", alignItems:"center"}}>  
+        <Button style={{margin:"5px"}} variant="contained">Inicio</Button>
+        <Button style={{margin:"5px"}} onClick={handleOpen} variant="contained">Mis Datos</Button>
+        <Button style={{margin:"5px"}} variant="contained">Mi Carrito</Button>
         <Modal open={open} onClose={handleClose} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
           <Fade in={open}>
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
-                Iniciar Sesion
+                Tus Datos
               </Typography>
               <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                 Te enviaremos un codigo a tu mail para poder iniciar sesión. 
+                 Aquí podras modificar tus datos.
               </Typography>
-              <SignInForm closeSignIn={handleClose}></SignInForm>
+              <UserDataForm></UserDataForm>
             </Box>
           </Fade>
         </Modal>
