@@ -26,6 +26,6 @@ export const userDataAtom = atom({
   });
 export const productData = atom({
     key: "productData",
-    default: {}
+    default: {Images:[], }
   });
 

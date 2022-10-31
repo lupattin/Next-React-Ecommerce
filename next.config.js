@@ -11,6 +11,13 @@ const nextConfig = withSvgr({
   images: {
     domains: ['dl.airtable.com'],
   },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  }
 });
 
 module.exports = nextConfig

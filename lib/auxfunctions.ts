@@ -12,6 +12,7 @@ export function useEffectEmail(fetchHook){
           seterSignIn("none") 
           seterCode("flex")
         } 
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       },[fetchHook])
 }
 export function useEffectCode(fetchHook, closeSignIn){
@@ -27,6 +28,7 @@ export function useEffectCode(fetchHook, closeSignIn){
       seterDisplayHeaderNav("flex")
       seterToken(fetchHook.token)
     } 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[fetchHook])
 }
 

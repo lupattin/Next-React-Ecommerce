@@ -66,9 +66,6 @@ export function useSearchProducts(query){
 }
 export function useGetOrder(productID, token){
 
-    console.log(productID);
-    
-    
     const {data, error} = useSWRInmutable(productID? ["/api/order?productID=" + productID, token] : null, fetcherPostWithoutBody, {
         shouldRetryOnError:false,
         revalidateIfStale: false,
