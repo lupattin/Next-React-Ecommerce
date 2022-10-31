@@ -12,6 +12,7 @@ export const Navbar = ({displayNavbar}) => {
     
     useEffect(()=>{
       seterUserData(userData.data)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[userData])
     
   return (

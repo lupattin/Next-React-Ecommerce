@@ -22,6 +22,18 @@ export async function fetcherPost(id:string, body){
     
     return data
 }
+export async function fetcherPostWithoutBody(id:string, token){
+    
+    const res = await fetch(BASE_API_URL + id, {
+        method: "POST",
+        headers:{
+            "Authorization": "Bearer " + token
+        }
+    });    
+    const data = await res.json()
+    
+    return data
+}
 export async function fetcherPatch(id:string, body, token){
     
     const res = await fetch(BASE_API_URL + id, {

@@ -1,5 +1,5 @@
 import useSWRInmutable from 'swr/immutable'
-import { fetcherGet, fetcherPost, fetcherPatch } from './api'
+import { fetcherGet, fetcherPost, fetcherPatch, fetcherPostWithoutBody } from './api'
 
 export function useProducts(){
     const { data, error } = useSWRInmutable("/api/products/featured-products", fetcherGet)
@@ -47,6 +47,29 @@ export function usePatchMe(token, body){
         trigger = "cambio"
     }
     const {data, error} = useSWRInmutable( trigger? ["/api/me", body, token] : "", fetcherPatch, {
+        shouldRetryOnError:false,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    })
+    return { data, error }
+}
+export function useSearchProducts(query){
+    
+    const {data, error} = useSWRInmutable( "/api/search?q=" + query + "&limit=4&offset=1", fetcherGet, {
+        shouldRetryOnError:false,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    })
+    return { data, error }
+}
+export function useGetOrder(productID, token){
+
+    console.log(productID);
+    
+    
+    const {data, error} = useSWRInmutable(productID? ["/api/order?productID=" + productID, token] : null, fetcherPostWithoutBody, {
         shouldRetryOnError:false,
         revalidateIfStale: false,
         revalidateOnFocus: false,

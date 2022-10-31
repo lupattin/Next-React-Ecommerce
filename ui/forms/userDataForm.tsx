@@ -21,6 +21,7 @@ export const UserDataForm = () => {
       if(result?.result?.data?.message == 'User updated successfully'){
         seter(result.newData)
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [result])
     
 

@@ -24,4 +24,8 @@ export const userDataAtom = atom({
     key: "userDataAtom",
     default: {}
   });
+export const productData = atom({
+    key: "productData",
+    default: {}
+  });
 
