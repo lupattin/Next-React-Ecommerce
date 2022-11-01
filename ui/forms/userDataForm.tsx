@@ -2,12 +2,17 @@ import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { userDataAtom } from "lib/atoms";
+import { userDataAtom, loadingUserDataDisplay } from "lib/atoms";
 import { usePatchUserData } from "lib/auxfunctions";
 import { useEffect, useState } from "react";
+import { LoadingUserData } from "ui/loading/loading";
+import SuccessAlert from "ui/alerts/alerts";
+
 export const UserDataForm = () => {
 
     const seter = useSetRecoilState(userDataAtom)
+
+    const loadingSeter = useSetRecoilState(loadingUserDataDisplay)
 
     const { register, handleSubmit } = useForm();
 
@@ -26,9 +31,8 @@ export const UserDataForm = () => {
     
 
     function formSubmit(data) {
-      
-      setNewUserData(data)
-      
+      loadingSeter("flex")
+      setNewUserData(data)      
     }
 
     return (
@@ -65,6 +69,8 @@ export const UserDataForm = () => {
           <Button style={{marginTop:"20px"}} variant="contained" type="submit">
             Modificar
           </Button>
+          <LoadingUserData></LoadingUserData>
+          <SuccessAlert></SuccessAlert>
         </div>
     </form>
     );

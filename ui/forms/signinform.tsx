@@ -1,11 +1,12 @@
-import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
+import TextField from "@mui/material/TextField";
 import { Button } from "@mui/material";
 import { useAuth, useCode } from "lib/hooks";
 import { useState} from "react";
-import { useRecoilState } from 'recoil'
-import { signInDisplay, codeDisplay} from "lib/atoms"
+import { useRecoilState, useSetRecoilState } from 'recoil'
+import { signInDisplay, codeDisplay, loadingDisplay, loadingCodeDisplay} from "lib/atoms"
 import { useEffectEmail, useEffectCode } from "lib/auxfunctions";
+import { Loading, LoadingCode } from "ui/loading/loading";
 
 
 export const SignInForm = ({closeSignIn}) => {
@@ -13,6 +14,10 @@ export const SignInForm = ({closeSignIn}) => {
 
   const displaySignIn = useRecoilState(signInDisplay) as any;
   const displayCode = useRecoilState(codeDisplay) as any;
+  /* Seter the loading comp*/
+  const setloadingDisplay = useSetRecoilState(loadingDisplay)
+  const setloadingCodeDisplay = useSetRecoilState(loadingCodeDisplay)
+
 
   /* Show and disable the email form for sending the code */
   const [email, setEmail] = useState("");
@@ -30,11 +35,12 @@ export const SignInForm = ({closeSignIn}) => {
   /* The two handlers for the two forms */
   
   function formSubmit(data) {
-
+    setloadingDisplay("flex")
     setEmail(data.email);
   }
 
   function sendCode(data){
+    setloadingCodeDisplay("flex")
     setCode(data.code);
     
   }
@@ -53,6 +59,7 @@ export const SignInForm = ({closeSignIn}) => {
           <Button variant="contained" type="submit">
             Enviar
           </Button>
+          <Loading></Loading>
         </div>
     </form>
     <form onSubmit={handleSubmit(sendCode)}>
@@ -68,6 +75,7 @@ export const SignInForm = ({closeSignIn}) => {
           <Button variant="contained" type="submit">
             Ingresar
           </Button>
+          <LoadingCode></LoadingCode>
         </div>
       </form>
     </div>

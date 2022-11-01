@@ -1,15 +1,17 @@
 import { useEffect } from "react"
 import { useSetRecoilState, useRecoilValue } from 'recoil'
-import { signInDisplay, codeDisplay, headerNavDisplay, headerSignDisplay, token, userDataAtom } from "lib/atoms"
+import { signInDisplay, codeDisplay, headerNavDisplay, headerSignDisplay, token, loadingDisplay, loadingCodeDisplay, loadingUserDataDisplay, AlertUserDataDisplay } from "lib/atoms"
 import { usePatchMe } from "./hooks";
 
 export function useEffectEmail(fetchHook){
     const seterSignIn = useSetRecoilState(signInDisplay);
     const seterCode = useSetRecoilState(codeDisplay);
+    const setloadingDisplay = useSetRecoilState(loadingDisplay)
 
     useEffect(()=>{
         if(fetchHook != undefined){
-          seterSignIn("none") 
+          seterSignIn("none")
+          setloadingDisplay("none") 
           seterCode("flex")
         } 
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -18,6 +20,7 @@ export function useEffectEmail(fetchHook){
 export function useEffectCode(fetchHook, closeSignIn){
     const seterDisplayHeaderSign = useSetRecoilState(headerSignDisplay);
     const seterDisplayHeaderNav = useSetRecoilState(headerNavDisplay);
+    const setloadingDisplay = useSetRecoilState(loadingCodeDisplay)
 
     const seterToken = useSetRecoilState(token)
 
@@ -25,6 +28,7 @@ export function useEffectCode(fetchHook, closeSignIn){
     if(fetchHook != undefined){
       closeSignIn()
       seterDisplayHeaderSign("none")
+      setloadingDisplay("none")
       seterDisplayHeaderNav("flex")
       seterToken(fetchHook.token)
     } 
@@ -35,6 +39,8 @@ export function useEffectCode(fetchHook, closeSignIn){
 export function usePatchUserData (newData, oldData){
   
   const getToken = useRecoilValue(token);
+  const setUserDataDisplay = useSetRecoilState(loadingUserDataDisplay)
+  const setAlertUserDataDisplay = useSetRecoilState(AlertUserDataDisplay)
   
   if(newData.name == ""){
     newData.name = oldData.name
@@ -47,6 +53,15 @@ export function usePatchUserData (newData, oldData){
   }
 
   const result = usePatchMe(getToken, newData)
+
+  if(result?.data?.message){
+    setUserDataDisplay("none")
+    setAlertUserDataDisplay("flex")
+    setTimeout(()=>{
+      setAlertUserDataDisplay("none")
+    }, 4000)
+  }
+  
 
   return {result, newData}
   

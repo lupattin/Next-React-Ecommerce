@@ -6,12 +6,15 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { UserDataForm } from "ui/forms/userDataForm";
+import { useRouter } from "next/router";
 
 export const UserData = () => {
     
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const router = useRouter()
 
   const style = {
     position: 'absolute' as 'absolute',
@@ -30,7 +33,7 @@ export const UserData = () => {
   return (
       
       <div style={{display:"flex", alignItems:"center"}}>  
-        <Button style={{margin:"5px"}} variant="contained">Inicio</Button>
+        <Button onClick={()=>{ router.push("/")}} style={{margin:"5px"}} variant="contained">Inicio</Button>
         <Button style={{margin:"5px"}} onClick={handleOpen} variant="contained">Mis Datos</Button>
         <Button style={{margin:"5px"}} variant="contained">Mi Carrito</Button>
         <Modal open={open} onClose={handleClose} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>

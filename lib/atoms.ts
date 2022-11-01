@@ -16,6 +16,22 @@ export const headerSignDisplay = atom({
     key: "headerSignDisplay",
     default: "flex"
   });
+export const loadingDisplay = atom({
+    key: "loadingDisplay",
+    default: "none"
+  });
+export const loadingCodeDisplay = atom({
+    key: "loadingCodeDisplay",
+    default: "none"
+  });
+export const loadingUserDataDisplay = atom({
+    key: "loadingUserDataDisplay",
+    default: "none"
+  });
+export const AlertUserDataDisplay = atom({
+    key: "AlertUserDataDisplay",
+    default: "none"
+  });
 export const token = atom({
     key: "token",
     default: ""

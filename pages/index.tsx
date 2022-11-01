@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   
   return (
     <Layout>
-      <div style={{height: "90vh"}}>
+      <div style={{height: "84vh"}}>
         <Search></Search>
         <Slyder data={data}></Slyder>
       </div>
