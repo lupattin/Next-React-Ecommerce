@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { StyledContainerSearcher } from "ui/container/container";
 import { useRouter } from "next/router";
-
+import styled from 'styled-components';
 export const SearchBar = () => {
 
   const router = useRouter()
@@ -15,8 +15,16 @@ export const SearchBar = () => {
   }
     return (
       <StyledContainerSearcher>
-        <h2>Busca tu producto.</h2>
-        <TextField onKeyDown={handleSubmit} fullWidth= {false} label="Buscar..." id="fullWidth" style={{width:"50vw"}}/>
+        <h2 style={{textAlign:"center"}}>Busca tu producto.</h2>
+        <ResponsiveTextField onKeyDown={handleSubmit} fullWidth= {false} label="Buscar..." id="fullWidth"/>
       </StyledContainerSearcher>
     );
   };
+
+  const ResponsiveTextField = styled(TextField)`
+
+    width:50vw;
+  @media (max-width: 768px) {
+    width:70vw;
+  }
+  `

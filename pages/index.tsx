@@ -1,17 +1,22 @@
 import type { NextPage } from 'next'
 import { Layout } from 'components/layout/layout'
 import { Search } from 'components/searchComp/search'
-import {Slyder} from "components/slyder/slyder"
+import SwipeableTextMobileStepper from 'components/slyder/slyderMUI'
 import { useProducts } from 'lib/hooks'
+import Head from 'next/head'
 const Home: NextPage = () => {
 
   const data = useProducts()  
   
   return (
     <Layout>
-      <div style={{height: "84vh"}}>
+       <Head>
+        <title>BuYiT</title>
+      </Head>
+      <div style={{height: "84vh", display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center"}}>
         <Search></Search>
-        <Slyder data={data}></Slyder>
+        <h2>Productos Destacados</h2>
+        <SwipeableTextMobileStepper products={data}></SwipeableTextMobileStepper>
       </div>
     </Layout>
   )

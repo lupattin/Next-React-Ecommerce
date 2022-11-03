@@ -1,7 +1,6 @@
 import { useSearchProducts } from "lib/hooks";
 import { ProductCard } from "ui/card/card";
 import Grid from '@mui/material/Grid';
-import { useEffect} from "react";
 
 export const ProductsList = ({query}) => {
         

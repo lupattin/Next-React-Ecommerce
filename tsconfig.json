@@ -17,6 +17,6 @@
     "incremental": true,
     "noImplicitAny": false
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/slyder/slyder.jsx", "components/slyder/slyderMUI.tsx"],
   "exclude": ["node_modules"]
 }

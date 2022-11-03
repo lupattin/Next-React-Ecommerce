@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { SignInForm } from "ui/forms/signinform";
+import styled from "styled-components"
 
 export const SignIn = ({displaySignIn}) => {
     
@@ -47,3 +48,7 @@ export const SignIn = ({displaySignIn}) => {
       </div>
     );
   };
+
+  const ButtonResponsive = styled(Button)`
+    
+  `

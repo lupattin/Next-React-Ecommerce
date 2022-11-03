@@ -1,11 +1,19 @@
 import { StyledContainerFooter } from "ui/container/container";
 import { LogoWheat } from "ui/logo/logo";
 import { Redes } from "ui/redes/redes";
+import styled from "styled-components";
 export const Footer = () => {
     return (
-      <StyledContainerFooter>
+      <StyledContainerFooterResponsive>
         <LogoWheat></LogoWheat>
         <Redes></Redes>
-      </StyledContainerFooter>
+      </StyledContainerFooterResponsive>
     );
   };
+
+  const StyledContainerFooterResponsive = styled(StyledContainerFooter)`
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  `
