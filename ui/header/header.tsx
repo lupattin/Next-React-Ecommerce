@@ -5,7 +5,7 @@ import { HelloUser } from "ui/navbar/hellouser";
 import {StyledContainerHeader} from "ui/container/container"
 import { useRecoilState } from 'recoil'
 import { headerNavDisplay, headerSignDisplay } from "lib/atoms"
-import styled from "styled-components"
+
 
 
 export const Header = () => {

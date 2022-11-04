@@ -2,7 +2,7 @@ import Container from '@mui/material/Container';
 import styled from "styled-components"
 
 function MUIContainer ({className, children}:any){
-  return <Container maxWidth={false} className={className}>{children}</Container>
+  return <Container maxWidth={false} style={{display:"flex"}} className={className}>{children}</Container>
 }
 const StyledContainerHeader = styled(MUIContainer)`
   display:flex;

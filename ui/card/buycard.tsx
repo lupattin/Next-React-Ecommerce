@@ -56,7 +56,7 @@ export const BuyProductCard = () => {
               width: 600,
               height: 470,
             }}
-              src={product?.Images[0]?.url}
+              src={product?.Images?.[0]?.url}
           />
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
