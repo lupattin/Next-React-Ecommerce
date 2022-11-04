@@ -5,6 +5,7 @@ import { HelloUser } from "ui/navbar/hellouser";
 import {StyledContainerHeader} from "ui/container/container"
 import { useRecoilState } from 'recoil'
 import { headerNavDisplay, headerSignDisplay } from "lib/atoms"
+import styled from "styled-components"
 
 
 export const Header = () => {
@@ -14,11 +15,19 @@ export const Header = () => {
   
   
     return (
-      <StyledContainerHeader>
+      <StyledContainerHeaderResponsive>
         <Navbar displayNavbar={displayNavBar}></Navbar> 
         <SignIn displaySignIn={displaySign}></SignIn>
         <HelloUser displayHello={displayNavBar}></HelloUser>
         <Logo></Logo>
-      </StyledContainerHeader>
+      </StyledContainerHeaderResponsive>
     );
   };
+
+  const StyledContainerHeaderResponsive = styled(StyledContainerHeader)`
+        @media (max-width: 768px) {
+          display: flex;
+          flex-direction: column-reverse;
+          height:200px;
+        }
+  `  
