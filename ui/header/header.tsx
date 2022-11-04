@@ -15,19 +15,12 @@ export const Header = () => {
   
   
     return (
-      <StyledContainerHeaderResponsive>
+      <StyledContainerHeader>
         <Navbar displayNavbar={displayNavBar}></Navbar> 
         <SignIn displaySignIn={displaySign}></SignIn>
         <HelloUser displayHello={displayNavBar}></HelloUser>
         <Logo></Logo>
-      </StyledContainerHeaderResponsive>
+      </StyledContainerHeader>
     );
   };
 
-  const StyledContainerHeaderResponsive = styled(StyledContainerHeader)`
-        @media (max-width: 768px) {
-          display: flex;
-          flex-direction: column-reverse;
-          height:200px;
-        }
-  `  

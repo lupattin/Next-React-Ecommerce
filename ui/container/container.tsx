@@ -11,6 +11,11 @@ const StyledContainerHeader = styled(MUIContainer)`
   background-color: rgb(244 235 240);
   height: 100px;
   border-bottom: 1px solid #e0e0e0;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    height:200px;
+  }
 `
 
 const StyledContainerFooter = styled(MUIContainer)`
