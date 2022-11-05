@@ -10,7 +10,8 @@ import { token } from 'lib/atoms';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router'
 import { useGetOneProduct } from 'lib/hooks';
-
+import styled from "styled-components"
+import Alert from '@mui/material/Alert';
 
 export const BuyProductCard = () => {
 
@@ -27,6 +28,8 @@ export const BuyProductCard = () => {
         stock = "No"
     }
 
+    const [errorAlert, setErrorAlert] = useState("none");
+    
     const [shouldFetch, setShouldFetch] = useState(null);
 
     const getOrder = useGetOrder(shouldFetch, getToken)
@@ -35,6 +38,12 @@ export const BuyProductCard = () => {
 
         if(getOrder?.data?.url){
             router.push(getOrder.data.url)
+        }else if(getOrder?.error){
+            setErrorAlert("flex")
+            setTimeout(()=>{
+                setErrorAlert("none")
+            },4000)
+            
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[getOrder])
@@ -47,16 +56,16 @@ export const BuyProductCard = () => {
     }
     
     return (
-        <div style={{display:"flex"}}>
+        <ResponsiveDiv style={{display:"flex"}}>
             <Box    
               component="img"
-              sx={{
-              width: 600,
+              sx={{ 
+              width: {xs:"90%", md:600},
               height: 470,
             }}
               src={product?.data?.Images?.[0]?.url}
           />
-          <Card sx={{ minWidth: 275 }}>
+          <Card sx={{ minWidth: 275, width:{xs:"90%"} }} style={{backgroundColor:"wheat", display:"flex", flexDirection:"column", justifyContent:"space-around"}}>
             <CardContent>
                 <Typography variant='h2' sx={{ fontSize: 40, textAlign:"center", fontWeight:"600" }} gutterBottom>
                  {product?.data?.Name}
@@ -64,7 +73,7 @@ export const BuyProductCard = () => {
                 <Typography variant="body2">
                 {product?.data?.Description}
                 </Typography>
-                <Typography style={{display:"flex", alignItems:"center", justifyContent: "space-evenly", margin:"10px 10px"}} variant="h5" component="div">
+                <Typography style={{display:"flex", alignItems:"center", margin:"10px 10px"}} variant="h5" component="div">
                 colors: {product?.data?.Color?.map((color)=>{ return <Box key={color} sx={{width:20, height:20 }} style={{backgroundColor:color, border:"solid black 1px", marginLeft:"10px"}}/>})}
                 </Typography>
                 <Typography sx={{ margin:"10px 10px"}} variant="h5">
@@ -74,10 +83,19 @@ export const BuyProductCard = () => {
                 Precio: {product?.data?.["Unit cost"]}
                 </Typography>
             </CardContent>
+            <Alert variant="outlined" severity="error" style={{display:errorAlert, width:"60%", margin:"auto", justifyContent:"center"}}>Para poder comprar, necesitas logearte primero!</Alert>
             <CardActions >
-                <Button onClick={handleClick} style={{margin:"auto", background:"#aeaeae"}} size="large">Comprar</Button>
+                <Button onClick={handleClick} style={{margin:"auto", background:"#aeaeae", width:"215px"}} size="large">Comprar</Button>
             </CardActions>
           </Card>
-        </div>
+        </ResponsiveDiv>
     );
   };
+
+  const ResponsiveDiv = styled("div")`
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+            align-items: center;
+        }
+  `

@@ -5,7 +5,8 @@ const Product: NextPage = () => {
   
   return (
     <Layout>
-      <div style={{height: "80vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
+      <div style={{ display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column"}}>
+        <h3 style={{fontSize:"38px", textAlign:"center"}}>Producto seleccionado.</h3>
       <BuyProductCard></BuyProductCard>
       </div>
     </Layout>
