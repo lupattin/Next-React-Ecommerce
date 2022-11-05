@@ -5,18 +5,13 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useRouter } from 'next/router'
-import { productData } from 'lib/atoms';
-import { useSetRecoilState } from 'recoil';
 
 export const ProductCard = ({product}) => {
-
-    const seter = useSetRecoilState(productData)
+   
     const router = useRouter()  
 
-    
    function handleClick(){
     router.push("/product/" + product.objectID)
-    seter(product)
    }
     
     return (

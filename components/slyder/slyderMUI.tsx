@@ -14,6 +14,8 @@ import { useRouter } from 'next/router'
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
 function SwipeableTextMobileStepper({products}) {
+
+  const router = useRouter()
     
   const theme = useTheme();
   const [activeStep, setActiveStep] = useState(0);
@@ -30,6 +32,10 @@ function SwipeableTextMobileStepper({products}) {
   const handleStepChange = (step) => {
     setActiveStep(step);
   };
+
+  function handleClick(productID){
+    router.push("/product/" + productID)
+  }
 
 
   return (
@@ -66,6 +72,7 @@ function SwipeableTextMobileStepper({products}) {
                   overflow: 'hidden',
                   width: '100%',
                 }}
+                onClick={()=>{handleClick(step.objectID)}}
                 src={step.Images[0].url}
                 alt={step.Name}
               />

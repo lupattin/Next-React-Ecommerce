@@ -74,3 +74,13 @@ export function useGetOrder(productID, token){
     })
     return { data, error }
 }
+export function useGetOneProduct(productID){
+
+    const {data, error} = useSWRInmutable(productID? ["/api/products/" + productID] : null, fetcherGet, {
+        shouldRetryOnError:false,
+        revalidateIfStale: false,
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    })
+    return { data, error }
+}

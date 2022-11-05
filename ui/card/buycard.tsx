@@ -6,24 +6,22 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useGetOrder } from 'lib/hooks';
 import { useEffect, useState } from 'react';
-import { token, productData } from 'lib/atoms';
+import { token } from 'lib/atoms';
 import { useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router'
+import { useGetOneProduct } from 'lib/hooks';
 
 
 export const BuyProductCard = () => {
 
-    const product = useRecoilValue(productData) as any
+    const router = useRouter()    
 
-    console.log(product);
-    
-    
-    const router = useRouter()
+    const product = useGetOneProduct(router.query.id) as any    
 
     const getToken = useRecoilValue(token)
 
     let stock;
-    if(product["In stock"] == true){
+    if(product?.data?.["In stock"] == true){
         stock = "Yes"
     }else{
         stock = "No"
@@ -44,7 +42,7 @@ export const BuyProductCard = () => {
 
     function handleClick(){
  
-        setShouldFetch(product.objectID)
+        setShouldFetch(product.data.objectID)
        
     }
     
@@ -56,24 +54,24 @@ export const BuyProductCard = () => {
               width: 600,
               height: 470,
             }}
-              src={product?.Images?.[0]?.url}
+              src={product?.data?.Images?.[0]?.url}
           />
           <Card sx={{ minWidth: 275 }}>
             <CardContent>
                 <Typography variant='h2' sx={{ fontSize: 40, textAlign:"center", fontWeight:"600" }} gutterBottom>
-                 {product?.Name}
+                 {product?.data?.Name}
                 </Typography>
                 <Typography variant="body2">
-                {product?.Description}
+                {product?.data?.Description}
                 </Typography>
                 <Typography style={{display:"flex", alignItems:"center", justifyContent: "space-evenly", margin:"10px 10px"}} variant="h5" component="div">
-                colors: {product?.Color?.map((color)=>{ return <Box key={color} sx={{width:20, height:20 }} style={{backgroundColor:color, border:"solid black 1px", marginLeft:"10px"}}/>})}
+                colors: {product?.data?.Color?.map((color)=>{ return <Box key={color} sx={{width:20, height:20 }} style={{backgroundColor:color, border:"solid black 1px", marginLeft:"10px"}}/>})}
                 </Typography>
                 <Typography sx={{ margin:"10px 10px"}} variant="h5">
                 Stock: {stock}
                 </Typography>
                 <Typography sx={{ margin:"10px 10px" }} variant="h5">
-                Precio: {product["Unit cost"]}
+                Precio: {product?.data?.["Unit cost"]}
                 </Typography>
             </CardContent>
             <CardActions >
