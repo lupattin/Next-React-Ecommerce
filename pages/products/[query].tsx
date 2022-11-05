@@ -10,7 +10,7 @@ const Products: NextPage = () => {
   
   return (
     <Layout>
-      <div style={{height: "180vh"}}>
+      <div style={{minHeight: "50vh"}}>
        <Search></Search>
        <ProductsList query={router.query}></ProductsList>
       </div>

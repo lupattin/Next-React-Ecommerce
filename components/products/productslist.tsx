@@ -11,7 +11,7 @@ export const ProductsList = ({ query }) => {
   const [pageValue, setPageValue] = useState(1);
   let productsPages = [] as any;
 
-  if (products?.data?.pagination.total > 6) {
+  if (products?.data?.pagination?.total > 6) {
     const array = products?.data?.results[0];
 
     for (let index = 0; index < array.length; index += 6) {
@@ -24,14 +24,23 @@ export const ProductsList = ({ query }) => {
   if (products?.data?.results) {
     if (products.data.pagination.total >= 6) {
       return (
-        <Stack spacing={2}>
-          <Grid container spacing={3}>
+        <Stack style={{display:"flex", alignItems:"center"}} spacing={2}>
+          <h5 style={{textAlign:"center"}}>Productos encontrados: {products?.data?.results[0].length}</h5>
+          <Pagination
+            count={productsPages.length}
+            onChange={(event, value) => {
+              setPageValue(value);
+            }}
+          />
+          <Grid container spacing={2}>
             {productsPages[pageValue - 1].map((product) => {
               return (
                 <Grid
                   key={product.objectID}
                   item
-                  xs={4}
+                  lg={4}
+                  sm={6}               
+                  xs={12}
                   style={{ display: "flex", justifyContent: "center" }}
                 >
                   <ProductCard product={product}></ProductCard>
@@ -44,13 +53,14 @@ export const ProductsList = ({ query }) => {
             onChange={(event, value) => {
               setPageValue(value);
             }}
+            style={{marginBottom:"10px"}}
           />
         </Stack>
       );
     } else {
       return (
         <div>
-          <h5>Productos encontrados: {products?.data?.results[0].length}</h5>
+          <h5 style={{textAlign:"center"}}>Productos encontrados: {products?.data?.results[0].length}</h5>
 
           <Grid container spacing={3}>
             {products?.data?.results[0].map((product) => {
@@ -59,7 +69,9 @@ export const ProductsList = ({ query }) => {
                 <Grid
                   key={product.objectID}
                   item
-                  xs={4}
+                  lg={4}
+                  sm={6}               
+                  xs={12}
                   style={{ display: "flex", justifyContent: "center" }}
                 >
                   <ProductCard product={product}></ProductCard>
