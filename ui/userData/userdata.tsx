@@ -35,7 +35,7 @@ export const UserData = () => {
       <div style={{display:"flex", alignItems:"center"}}>  
         <Button onClick={()=>{ router.push("/")}} style={{margin:"5px"}} variant="contained">Inicio</Button>
         <Button style={{margin:"5px"}} onClick={handleOpen} variant="contained">Mis Datos</Button>
-        <Button style={{margin:"5px"}} variant="contained">Mi Carrito</Button>
+        <Button style={{margin:"5px"}} onClick={()=>{window.scrollTo(0, document. body. scrollHeight)}} variant="contained">Contacto</Button>
         <Modal open={open} onClose={handleClose} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
           <Fade in={open}>
             <Box sx={style}>
