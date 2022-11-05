@@ -56,7 +56,7 @@ export function usePatchMe(token, body){
 }
 export function useSearchProducts(query){
     
-    const {data, error} = useSWRInmutable( "/api/search?q=" + query + "&limit=4&offset=1", fetcherGet, {
+    const {data, error} = useSWRInmutable( "/api/search?q=" + query + "&limit=100&offset=1", fetcherGet, {
         shouldRetryOnError:false,
         revalidateIfStale: false,
         revalidateOnFocus: false,
