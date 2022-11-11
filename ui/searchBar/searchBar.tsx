@@ -15,7 +15,7 @@ export const SearchBar = () => {
   }
     return (
       <StyledContainerSearcher>
-        <h2 style={{textAlign:"center"}}>Busca tu producto.</h2>
+        <h2 style={{textAlign:"center", color:"black"}}>Busca tu producto.</h2>
         <ResponsiveTextField onKeyDown={handleSubmit} fullWidth= {false} label="Buscar..." id="fullWidth"/>
       </StyledContainerSearcher>
     );

@@ -39,10 +39,10 @@ export const UserData = () => {
         <Modal open={open} onClose={handleClose} closeAfterTransition BackdropComponent={Backdrop} BackdropProps={{ timeout: 500 }}>
           <Fade in={open}>
             <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography id="modal-modal-title" variant="h6" component="h2" style={{color:"black"}}>
                 Tus Datos
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }} style={{color:"black"}}> 
                  Aquí podras modificar tus datos.
               </Typography>
               <UserDataForm></UserDataForm>

@@ -24,7 +24,7 @@ export const HelloUser = ({displayHello}) => {
     
     return (
         <div style={{display:displayHello[0], flexDirection:"column", alignItems:"center"}}>
-          <p style={{margin:"0"}}>¡Hola {useUserData?.name}!</p>
+          <p style={{margin:"0", color:"black"}}>¡Hola {useUserData?.name}!</p>
           <Link onClick={handleClick} underline="hover">Cerrar sesión</Link>
         </div>
     );

@@ -13,9 +13,9 @@ const Home: NextPage = () => {
        <Head>
         <title>BuYiT</title>
       </Head>
-      <div style={{height: "84vh", display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center"}}>
+      <div style={{height: "84vh", display:"flex", flexDirection:"column", justifyContent:"space-between", alignItems:"center", backgroundColor:"white"}}>
         <Search></Search>
-        <h2>Productos Destacados</h2>
+        <h2 style={{color:"black"}}>Productos Destacados</h2>
         <SwipeableTextMobileStepper products={data}></SwipeableTextMobileStepper>
       </div>
     </Layout>

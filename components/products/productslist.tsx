@@ -24,8 +24,8 @@ export const ProductsList = ({ query }) => {
   if (products?.data?.results) {
     if (products.data.pagination.total >= 6) {
       return (
-        <Stack style={{display:"flex", alignItems:"center"}} spacing={2}>
-          <h5 style={{textAlign:"center"}}>Productos encontrados: {products?.data?.results[0].length}</h5>
+        <Stack style={{display:"flex", alignItems:"center", backgroundColor:"white"}} spacing={2}>
+          <h5 style={{textAlign:"center", color:"black"}}>Productos encontrados: {products?.data?.results[0].length}</h5>
           <Pagination
             count={productsPages.length}
             onChange={(event, value) => {

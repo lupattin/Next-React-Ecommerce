@@ -18,10 +18,10 @@ const ThankYou: NextPage = () => {
       <Head>
         <title>ThankYou!</title>
       </Head>
-      <div style={{height: "50vh", display:"flex", justifyContent:"center", alignItems:"center"}}>
+      <div style={{height: "50vh", display:"flex", justifyContent:"center", alignItems:"center", backgroundColor:"white"}}>
         <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-          <h2> ¡Tu compra fue realizada con exito!</h2>
-          <h3>¡Gracias por comprar con nosotros!</h3>
+          <h2 style={{color:"black"}}> ¡Tu compra fue realizada con exito!</h2>
+          <h3 style={{color:"black"}}>¡Gracias por comprar con nosotros!</h3>
           <Button onClick={handleClick} size='large' variant="contained">Seguir comprando</Button>
         </div>
       </div>

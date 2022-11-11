@@ -27,6 +27,7 @@ const StyledContainerFooter = styled(MUIContainer)`
 `
 
 const StyledContainerSearcher = styled(MUIContainer)`
+  background-color: white;
   height: 100px;
   display: flex;
   align-items: center;
