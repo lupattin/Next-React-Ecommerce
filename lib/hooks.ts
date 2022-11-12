@@ -8,7 +8,7 @@ export function useProducts(){
 }
 export function useAuth(email){
         
-    const { data, error } = useSWRInmutable( email? [ "/api/auth" , {email}] : "", fetcherPost, {
+    const { data, error } = useSWRInmutable( email? [ "/api/auth" , {email, name:""}] : "", fetcherPost, {
         shouldRetryOnError:false,
         revalidateIfStale: false,
         revalidateOnFocus: false,
